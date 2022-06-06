@@ -1,13 +1,13 @@
-service: serverless-pdf-generator
+service: serverless-quod-screenshotter
 
-frameworkVersion: ">=2.13.0 <3.0.0"
+frameworkVersion: '>=2.13.0 <3.0.0'
 
 custom:
   stage: ${opt:stage, 'stage'}
 
   s3:
-    responseRegion: 'us-east-1'
-    responseBucket: 'barchart-aws-lambda-responses'
+    responseRegion: 'eu-west-2'
+    responseBucket: 'uploads.atmos.dreamm.co.uk'
 
   cors:
     origin: '*'
@@ -31,9 +31,10 @@ custom:
 
 provider:
   name: aws
+  region: eu-west-2
   runtime: nodejs12.x
   logRetentionInDays: 90
-  deploymentBucket: barchart-serverless-deployments
+  deploymentBucket: dreamm-pdf-serverless-deployments
 
   environment:
     NODE_ENV: ${self:custom.stage}
@@ -67,7 +68,7 @@ functions:
     handler: print/print.handler
     description: Generates a PDF from HTML (using Chromium v88)
     memorySize: 1536
-    timeout: 30
+    timeout: 300
     layers:
       - { Ref: HeadlessChromiumLambdaLayer }
     events:

@@ -1,12 +1,8 @@
 {
-  "name": "@barchart/aws-lambda-pdf-generator",
+  "name": "dreamm-lambd-quod-screenshotter",
   "workspaces": [
     "packages/*"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/barchart/barchart/aws-lambda-pdf-generator.git"
-  },
   "scripts": {
     "clean": "lerna clean --yes && rm -rf node_modules",
     "lint": "lerna run lint --stream",
